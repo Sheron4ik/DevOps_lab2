@@ -28,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: py:test
+          tags: py:v0
 
       - name: Docker Run
-        run: docker run -it py:test
+        run: docker run -it py:v0

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  dockerise:
+  docker_build:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -30,9 +30,16 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/bot:latest
 
-      - name: Docker Run
+  docker_run:
+    needs: docker_build
+    runs-on: self-hosted
+    steps:
+      - name: Docker Stop
         run: |
           docker stop ${{ secrets.DOCKER_USERNAME }}/bot:latest
           docker rm ${{ secrets.DOCKER_USERNAME }}/bot:latest
+
+      - name: Docker Run
+        run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/bot:latest
           docker run ${{ secrets.DOCKER_USERNAME }}/bot:latest

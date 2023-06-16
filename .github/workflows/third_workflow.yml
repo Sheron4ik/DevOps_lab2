@@ -28,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: py:v0
+          tags: ${{ secrets.DOCKER_USERNAME }}/bot:latest
 
       - name: Docker Run
-        run: docker run -it py:v0
+        run: docker run -it ${{ secrets.DOCKER_USERNAME }}/bot:latest

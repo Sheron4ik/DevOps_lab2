@@ -76,4 +76,3 @@ with open("picture_" + v + ".txt", "w", encoding="utf-8", errors="ignore") as fi
     file.write("О, мой бог, хорошая работа, Олег!\n")
     file.writelines(pict)
 print(*pict)
-print('Hi')

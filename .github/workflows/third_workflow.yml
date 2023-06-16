@@ -35,10 +35,6 @@ jobs:
     needs: docker_build
     runs-on: self-hosted
     steps:
-      - name: Docker Stop
-        run: |
-          docker rm ${{ secrets.DOCKER_USERNAME }}/bot:latest
-
       - name: Docker Run
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/bot:latest

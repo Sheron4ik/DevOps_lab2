@@ -1,4 +1,4 @@
-name: draw python picture
+name: checking
 on:
   push:
     branches: [ "master" ]

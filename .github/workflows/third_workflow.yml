@@ -28,9 +28,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/bot:latest
+          tags: user/bot:latest
 
       - name: Docker Run
         run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/bot:latest
-          docker run -it ${{ secrets.DOCKER_USERNAME }}/bot:latest
+          docker pull user/bot:latest
+          docker run user/bot:latest

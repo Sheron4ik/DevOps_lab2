@@ -1,20 +1,26 @@
 from sys import argv
+
 if len(argv) == 1:
     exit()
 
 import telebot
 from telebot import types
+
 bot = telebot.TeleBot(argv[1])
 
-@bot.message_handler(commands=['start', 'help'])
+
+@bot.message_handler(commands=["start", "help"])
 def send_info(message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(types.KeyboardButton("Добавить задачу"))
     keyboard.add(types.KeyboardButton("Удалить задачу"))
     keyboard.add(types.KeyboardButton("Список задач"))
-    bot.send_message(message.from_user.id, "Hi, I am todoSher =)", reply_markup=keyboard)
+    bot.send_message(
+        message.from_user.id, "Hi, I am todoSher =)", reply_markup=keyboard
+    )
 
-@bot.message_handler(content_types=['text'])
+
+@bot.message_handler(content_types=["text"])
 def get_text_messages(message):
     if message.text == "Добавить задачу":
         bot.send_message(message.from_user.id, "Введи задачу:")
